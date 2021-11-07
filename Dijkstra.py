@@ -22,11 +22,11 @@ class Dijkstra(Map):
 
     @stopwatch
     def run(self, hueristic = "Euclidean", scale1 = 1, scale2 = 1):
+        h_f = eval("Dijkstra."+hueristic)
+        #Initialise
         self.start_node = self.start_nodes[0]
         self.end_node = self.end_nodes[0]
-
         self.start_node.parent = self.start_node
-        h_f = eval("Dijkstra."+hueristic)
         self.start_node.g_cost = 0; self.start_node.h_cost = h_f(self.start_node.position, self.end_node.position, scale = scale2, ignore = True)
         self.start_node.f_cost = self.start_node.g_cost + self.start_node.h_cost
         self.end_node.h_cost = 0
@@ -34,13 +34,15 @@ class Dijkstra(Map):
         self.add_to_frontier(self.start_node)
 
         while (len(self.frontier)>0):
+            #Select
             curr = hq.heappop(self.priority_queue)
             self.remove_from_frontier(curr)
+            #Goal Test
             if curr == self.end_node:
                 break
             else:
                 pass
-
+            #Expand
             for neigh in curr.neighbours:
                 if neigh.walked == False:
                     val = neigh.check_costs_star(curr, self.end_node, h_f, h_f, scale1, scale2)
@@ -51,7 +53,7 @@ class Dijkstra(Map):
                         self.count += 1
             
             if (self.show_process):
-                # Display the progress
+                # Animate the progress
                 timg = cv2.imread(self.img_loc)  
                 self.draw_travesed(timg)
                 self.draw_frontier(timg)

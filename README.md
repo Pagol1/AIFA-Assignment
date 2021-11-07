@@ -3,9 +3,9 @@ Group project for Assignment #1 of the AIFA course \[AI61005\].
 
 ### Group Members
 - Chirahg Gupta [20ME30016]
-- Saksham Kumar Singh [20EE10065]@photon999
+- Saksham Kumar Singh [20EE10065] @photon999
 - Saumyadip Nandy [20EC10072] @Pagol1
-- Vibhanshu Vaibhav [20EE30030]
+- Vibhanshu Vaibhav [20EE30030] @Vibhanshu2803
 
 ## Project Description
 Our project implements the A* and Dijkstra algorithms with different hueristics.\
@@ -30,7 +30,7 @@ The parameters in the config.json file can be changed to used to switch between 
 	@Values:
 	- 0: Skip map generation and use pre-existing map
 	- 1: Generate a new random map\
-	@Note: Must be set to 1 in the initial run
+	**@Note: Must be set to 1 in the initial run**
 + `num_random_obstacles`: Maximum number of obstacles
 + `rand_obstacle_size`: Maximum ostacle dimension (length or breadth)
 + `clearance`: Minimum obstacle distance from start and end nodes
@@ -46,6 +46,10 @@ The parameters in the config.json file can be changed to used to switch between 
 	@Values:
 	- 4: Square movement
 	- 8: Octagonal movement\
-	@Note: For Dijkstra use the Euclidean hueristic for octagonal movement
+	**@Note: For Dijkstra use the Euclidean hueristic for octagonal movement**
 + `show_process`: Set to 1 to see the current path, frontier and explored nodes; set to 0 otherwise.\
+<<<<<<< Updated upstream
 	@Note: Enabling this option heavily increases the execution time.
+=======
+	**@Note: Enabling this option heavily increases the execution time.**
+>>>>>>> Stashed changes

@@ -6,14 +6,14 @@ import cv2
 import time
 from Upscale import *
 
-def stopwatch(func):
+def stopwatch(func):                #returns execution time
     def timeWrapper(*args, **kwargs):
         begin = time.process_time()
         img = func(*args, **kwargs)
         end = time.process_time()
         print(end-begin, end = '\n')
         return img
-    return timeWrapper
+    return timeWrapper          
 
 class Astar(Map):
     """ Runs A* on the pre-processed map """
@@ -24,27 +24,31 @@ class Astar(Map):
     
     @stopwatch
     def run(self, hueristic = "Manhattan", scale1 = 1, scale2 = 1):
-        self.start_node = self.start_nodes[0]
-        self.end_node = self.end_nodes[0]
-        
-        self.start_node.parent = self.start_node
         g_f = eval("Astar.Euclidean")
-        h_f = eval("Astar."+hueristic)
+        h_f = eval("Astar."+hueristic) 
+
+        #Initialise
+        self.start_node = self.start_nodes[0]
+        self.end_node = self.end_nodes[0]     
+        self.start_node.parent = self.start_node 
+
         self.start_node.g_cost = 0; self.start_node.h_cost = h_f(self.start_node.position, self.end_node.position, scale = scale2)
         self.start_node.f_cost = self.start_node.g_cost + self.start_node.h_cost
         self.end_node.h_cost = 0
         hq.heappush(self.priority_queue, self.start_node)
         self.add_to_frontier(self.start_node)
-        cv2.destroyAllWindows()
 
         while (len(self.frontier)>0):
+            #Select
             curr = hq.heappop(self.priority_queue)
             self.remove_from_frontier(curr)
+            #Goal Test
             if curr == self.end_node:
                 break
             else:
                 pass
 
+            #Expand
             for neigh in curr.neighbours:
                 if neigh.walked == False:
                     val = neigh.check_costs_star(curr, self.end_node, g_f, h_f, scale1, scale2)
@@ -55,7 +59,7 @@ class Astar(Map):
                         self.count += 1
             
             if (self.show_process):
-                # Display the progress
+                # Animate the progress
                 timg = cv2.imread(self.img_loc)
                 self.draw_travesed(timg)
                 self.draw_frontier(timg)

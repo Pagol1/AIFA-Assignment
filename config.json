@@ -5,11 +5,11 @@
             "width" : 400,
             "start_pose" : [100,100],
             "goal_pose" : [300,300],
-            "generate_random_map" : 0,
+            "generate_random_map" : 1,
             "num_random_obstacles" : 500,
             "rand_obstacle_size" : 18,
             "clearance" : 12,
-            "type" : "Dijkstra-Euclidean",
+            "type" : "Astar-Diagonal",
             "valid_moves" : 8,
             "show_process" : 0
         }
