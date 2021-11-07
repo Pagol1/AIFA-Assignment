@@ -3,7 +3,7 @@ Group project for Assignment #1 of the AIFA course \[AI61005\].
 
 ### Group Members
 - Chirahg Gupta [20ME30016]
-- Saksham Kumar Singh [20EE10065]
+- Saksham Kumar Singh [20EE10065]@photon999
 - Saumyadip Nandy [20EC10072] @Pagol1
 - Vibhanshu Vaibhav [20EE30030]
 
