@@ -48,8 +48,4 @@ The parameters in the config.json file can be changed to used to switch between 
 	- 8: Octagonal movement\
 	**@Note: For Dijkstra use the Euclidean hueristic for octagonal movement**
 + `show_process`: Set to 1 to see the current path, frontier and explored nodes; set to 0 otherwise.\
-<<<<<<< Updated upstream
-	@Note: Enabling this option heavily increases the execution time.
-=======
 	**@Note: Enabling this option heavily increases the execution time.**
->>>>>>> Stashed changes
